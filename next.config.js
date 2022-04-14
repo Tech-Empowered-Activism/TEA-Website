@@ -6,5 +6,3 @@ module.exports = {
   assetPrefix: isProd ? '/your-github-repo-name/' : '',
   reactStrictMode: true,
 }
-
-module.exports = nextConfig
