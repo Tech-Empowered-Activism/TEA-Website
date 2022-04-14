@@ -36,7 +36,7 @@ jobs:
 
       - name: Build
         run: |
-          npm install
+          npm install --save typescript @types/react @types/node
           npm run build
           npm run export
       - name: Deploy
