@@ -34,7 +34,7 @@ jobs:
       - name: Build
         run: |
           npm ci
-          npm install -D @swc/cli @swc/core @types/react @types/node
+          npm install -D @swc/cli @swc/core @types/react@18.0.1 @types/node
           npm run build
           npm run export
       - name: Deploy
