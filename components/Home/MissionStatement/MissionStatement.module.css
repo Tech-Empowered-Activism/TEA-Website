@@ -1,0 +1,24 @@
+.heading {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+  padding: 64px;
+}
+
+.heading p {
+  font-size: 4.2rem;
+  line-height: 4.2rem;
+  font-weight: 900;
+}
+
+@media screen and (max-width: 600px) {
+  .heading {
+    padding: 32px 16px;
+  }
+
+  .heading p {
+    font-size: 2.25rem;
+    line-height: 2.25rem;
+  }
+}

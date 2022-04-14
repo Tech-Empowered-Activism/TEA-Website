@@ -1,0 +1,79 @@
+.container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+.missionStatementContainer {
+  width: calc(100% / 3);
+  z-index: 2;
+}
+
+.mainContentContainer {
+  width: calc(100% / 3 * 2);
+  height: 100%;
+  margin-left: calc(100% / 3);
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding: 80px;
+}
+
+.logoContainer {
+  width: 100%;
+  height: auto;
+  position: fixed;
+  z-index: 2;
+}
+
+@media only screen and (max-width: 1100px) {
+  .missionStatementContainer {
+    position: absolute !important;
+    margin: 0;
+  }
+
+  .logoContainer {
+    max-width: 250px !important;
+  }
+}
+
+@media (max-width: 1200px) {
+  .mainContentContainer {
+    width: calc(100% / 3);
+    margin-left: calc(100% / 3 * 2);
+  }
+
+  .logoContainer {
+    max-width: 150px !important;
+  }
+}
+
+@media (max-width: 850px) {
+  .logoContainer {
+    max-width: 100px !important;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .mainContentContainer {
+    width: calc(100% - 32px);
+    margin-left: 0;
+    max-width: none;
+  }
+
+  .logoContainer {
+    position: absolute;
+    top: 115vh;
+    left: 0;
+    width: 100vw !important;
+    padding: 0 24px;
+    max-width: none !important;
+  }
+
+  .logoContainer svg {
+    max-width: none;
+    width: 100% !important;
+  }
+}
