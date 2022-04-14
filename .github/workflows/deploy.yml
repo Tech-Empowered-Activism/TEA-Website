@@ -16,6 +16,10 @@ jobs:
 
       - name: Setup Node
         uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+      - run: npm install
+      # - run: npm test
 
       - name: Get npm cache directory path
         uses: actions/cache@v2
