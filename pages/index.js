@@ -1,6 +1,4 @@
 import Head from 'next/head'
-import Image from 'next/image'
-import CSS from '../styles/Home.module.css'
 
 import AboveTheFold from '../components/Home/AboveTheFold'
 import SupportSystem from '../components/Home/SupportSystem'
