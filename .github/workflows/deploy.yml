@@ -29,7 +29,7 @@ jobs:
       - name: Install dependencies
         run: |
           npm i -g npm@latest
-          npm ci --ignore-scripts
+          npm ci --ignore-scripts --force
 
       - name: Build
         run: |
