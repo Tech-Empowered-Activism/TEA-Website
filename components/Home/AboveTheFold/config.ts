@@ -1,2 +1,2 @@
-export const LOGO_MIN_WIDTH = 112
-export const LOGO_MAX_WIDTH = 400
+export const LOGO_MIN_WIDTH = 200
+export const LOGO_MAX_WIDTH = 500

@@ -102,7 +102,7 @@ const AboveTheFold = () => {
             }}
             className={CSS.logoContainer}
           >
-            <Logo fill={currentLogoValue} />
+            <Logo />
           </div>
         </section>
       </main>
