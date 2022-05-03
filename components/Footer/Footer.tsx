@@ -13,7 +13,7 @@ const Footer = () => {
 
         <div className={CSS.flex}>
           <section className={CSS.logoContainer}>
-            <Logo fill="#fffffa" />
+            <Logo />
           </section>
 
           <section className={CSS.links}>
