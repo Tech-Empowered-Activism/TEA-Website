@@ -27,7 +27,7 @@ const Footer = () => {
                   }}
                   rel="noopener noreferrer"
                   target="_blank"
-                  href="#"
+                  href="https://twitter.com/equitea_denver"
                 >
                   Twitter
                 </a>
@@ -53,7 +53,7 @@ const Footer = () => {
                   }}
                   rel="noopener noreferrer"
                   target="_blank"
-                  href="https://discord.gg/UEeJVDAx"
+                  href="https://discord.gg/44brbQVDdB"
                 >
                   Discord
                 </a>
@@ -69,10 +69,9 @@ const Footer = () => {
                     transition: 'var(--color-transition)',
                   }}
                   rel="noopener noreferrer"
-                  target="_blank"
-                  href="https://www.meetup.com/tech-against-late-stage-capitalism/"
+                  href="mailto:hi@teactivism.com"
                 >
-                  hi@tea.org
+                  hi@teactivism.com
                 </a>
               </div>
 
