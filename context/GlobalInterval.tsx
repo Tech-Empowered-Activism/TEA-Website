@@ -42,7 +42,7 @@ const GlobalIntervalContextProvider = ({ children }: Props) => {
   const [operations, setOperations] = useState({} as Record<string, Operation>)
   const [autoPlay, setAutoPlay] = useState(
     typeof window !== 'undefined' &&
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches,
+      !window.matchMedia('(prefers-reduced-motion: reduce)').matches,
   )
 
   const handleNext = useCallback(() => {
