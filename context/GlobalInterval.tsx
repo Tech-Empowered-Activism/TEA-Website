@@ -5,6 +5,8 @@ import {
   useCallback,
   useState,
   Context,
+  Dispatch,
+  SetStateAction,
 } from 'react'
 
 export type Operation = {
@@ -16,8 +18,15 @@ export type Operation = {
 export type GlobalIntervalContextValue = {
   interval: NodeJS.Timer
   operations: Record<string, Operation>
+
   appendOperation: (op: Operation) => void
   removeOperation: (opId: string) => void
+
+  forceNext: () => void
+  forcePrevious: () => void
+
+  autoPlay: boolean
+  setAutoPlay: Dispatch<SetStateAction<boolean>>
 }
 
 const GlobalIntervalContext: Context<GlobalIntervalContextValue> =
@@ -31,6 +40,10 @@ let globalInterval: NodeJS.Timer
 
 const GlobalIntervalContextProvider = ({ children }: Props) => {
   const [operations, setOperations] = useState({} as Record<string, Operation>)
+  const [autoPlay, setAutoPlay] = useState(
+    typeof window !== 'undefined' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches,
+  )
 
   const handleNext = useCallback(() => {
     Object.keys(operations).forEach((key) => {
@@ -44,11 +57,24 @@ const GlobalIntervalContextProvider = ({ children }: Props) => {
     })
   }, [operations])
 
+  const handlePrevious = useCallback(() => {
+    Object.keys(operations).forEach((key) => {
+      const newOps = { ...operations }
+      newOps[key].currentValue =
+        operations[key].currentValue === 0
+          ? operations[key].arrayLength - 1
+          : operations[key].currentValue - 1
+
+      setOperations(newOps)
+    })
+  }, [operations])
+
   // Iterate through the operations on the same interval
   useEffect(() => {
+    if (!autoPlay) return
     globalInterval = setInterval(handleNext, 2500)
     return () => clearInterval(globalInterval)
-  }, [handleNext])
+  }, [handleNext, autoPlay])
 
   // Register new operations to use the same timer interval
   const appendOperation = useCallback(
@@ -68,6 +94,16 @@ const GlobalIntervalContextProvider = ({ children }: Props) => {
     [operations],
   )
 
+  const forceNext = () => {
+    setAutoPlay(false)
+    handleNext()
+  }
+
+  const forcePrevious = () => {
+    setAutoPlay(false)
+    handlePrevious()
+  }
+
   return (
     <GlobalIntervalContext.Provider
       value={{
@@ -75,6 +111,11 @@ const GlobalIntervalContextProvider = ({ children }: Props) => {
         interval: globalInterval,
         appendOperation,
         removeOperation,
+
+        forceNext,
+        forcePrevious,
+        autoPlay,
+        setAutoPlay,
       }}
     >
       {children}

@@ -1,0 +1,40 @@
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.flexContainer {
+  position: absolute;
+  bottom: 32px;
+  left: 0;
+  display: flex;
+  justify-content: flex-start;
+  gap: 16px;
+  width: 60%;
+  margin: 0 auto 0 60px;
+}
+
+.button {
+  background-color: transparent;
+  border: 2px solid var(--app-background-contrast);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  min-height: 40px;
+  max-width: 40px;
+  max-height: 40px;
+  color: var(--app-background-contrast);
+  cursor: pointer;
+  transition: color .2s, background-color .2;
+  animation: fadeIn .2s ease-in forwards;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button:hover {
+  color: var(--app-background);
+  background-color: var(--app-background-contrast);
+  transition: all .2s;
+}
