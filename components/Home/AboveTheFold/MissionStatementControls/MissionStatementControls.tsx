@@ -7,26 +7,12 @@ import {
 } from 'react-icons/bs'
 import { useGlobalIntervalContext } from '../../../../context/GlobalInterval'
 
-type Props = {
-  fadingOut: boolean
-}
-
-const MissionStatementControls = ({ fadingOut }: Props) => {
+const MissionStatementControls = () => {
   const { forceNext, forcePrevious, autoPlay, setAutoPlay } =
     useGlobalIntervalContext()
 
   return (
-    <section
-      className={CSS.flexContainer}
-      style={{
-        ...(fadingOut
-          ? {
-              transition: 'opacity .2s',
-              opacity: 0,
-            }
-          : {}),
-      }}
-    >
+    <section className={CSS.flexContainer}>
       <button className={CSS.button}>
         <BsChevronLeft onClick={forcePrevious} size={16} />
       </button>
