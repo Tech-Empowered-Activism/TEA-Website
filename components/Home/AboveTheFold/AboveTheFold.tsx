@@ -18,8 +18,6 @@ enum MissionStatementPosition {
 const FADE_DURATION = 200
 
 const AboveTheFold = () => {
-  const { currentLogoValue } = useColorContext()
-
   const [currentScrollPosition, setCurrentScrollPosition] = useState(0)
   const debouncedScrollPosition: number = useDebounce<number>(
     currentScrollPosition,
@@ -29,7 +27,6 @@ const AboveTheFold = () => {
     MissionStatementPosition.Fixed,
   )
   const [shouldDisplayControls, setShouldDisplayControls] = useState(false)
-  const [fadingOut, setFadingOut] = useState(false)
 
   const handleScroll = () => {
     if (typeof window === 'undefined') return
@@ -78,26 +75,11 @@ const AboveTheFold = () => {
     )
   }, [percentOfAboveTheFoldViewport])
 
-  useEffect(() => {
-    let timeout: NodeJS.Timeout
-
-    if (!shouldDisplayControls) {
-      timeout = setTimeout(() => {
-        setFadingOut(false)
-      }, FADE_DURATION)
-    }
-
-    return () => clearTimeout(timeout)
-  }, [shouldDisplayControls])
-
   return (
     <>
       <aside
         onMouseEnter={() => setShouldDisplayControls(true)}
-        onMouseLeave={() => {
-          setShouldDisplayControls(false)
-          setFadingOut(true)
-        }}
+        onMouseLeave={() => setShouldDisplayControls(false)}
         style={{
           display:
             missionStatementPosition === MissionStatementPosition.Absolute &&
@@ -115,9 +97,7 @@ const AboveTheFold = () => {
       >
         <MissionStatement />
 
-        {(shouldDisplayControls || fadingOut) && (
-          <MissionStatementControls fadingOut={fadingOut} />
-        )}
+        <MissionStatementControls />
       </aside>
       <main className={CSS.container}>
         <section className={CSS.mainContentContainer}>
