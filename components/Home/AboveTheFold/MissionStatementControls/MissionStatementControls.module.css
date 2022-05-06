@@ -38,3 +38,11 @@
   background-color: var(--app-background-contrast);
   transition: all .2s;
 }
+
+
+@media only screen and (max-width: 600px) {
+  .flexContainer {
+    bottom: 0;
+    margin-left: 16px;
+  }
+}

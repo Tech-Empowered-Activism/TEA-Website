@@ -27,6 +27,20 @@
   z-index: 2;
 }
 
+@media only screen and (max-height: 1000px) {
+  .missionStatementContainer > h1 > p {
+    font-size: 2.5rem !important;
+    line-height: 2.5rem;
+  }
+}
+
+@media only screen and (max-height: 700px) {
+  .missionStatementContainer > h1 > p {
+    font-size: 1.75rem !important;
+    line-height: 1.75rem;
+  }
+}
+
 @media only screen and (max-width: 1100px) {
   .missionStatementContainer {
     position: absolute !important;
@@ -39,6 +53,10 @@
 }
 
 @media (max-width: 1200px) {
+  .container {
+    height: 100vh;
+  }
+
   .mainContentContainer {
     width: calc(100% / 3);
     margin-left: calc(100% / 3 * 2);
@@ -56,6 +74,8 @@
 }
 
 @media only screen and (max-width: 600px) {
+
+
   .mainContentContainer {
     width: calc(100% - 32px);
     margin-left: 0;
